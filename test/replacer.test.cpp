@@ -3,19 +3,25 @@
 #include "../src/string_reader.h"
 #include "../src/replacer.h"
 using namespace std;
-// テスト関数は(void) -> void型でなくてはならない
-void ts_cdot(){
-    string_reader sin{"a * b"};
+void expect_from_to(std::string input, std::string expected_str) {
+    string_reader sin{input};
     ostringstream sout;
-    const string expected = "a \\cout b";
-
+    const string expected = expected_str;
     replace_all(sin, sout);
-    
-    // actualの値を表示したい
-    TEST_CHECK_(sout.str() == expected, "OUT: %s;", sout.str().c_str());
+    TEST_CHECK_(sout.str() == expected, "OUT: \"%s\"", sout.str().c_str());
 }
+
+void ts_cdot(){
+    expect_from_to("a * b", "a \\cout b");
+}
+
+void ts_infinity(){
+    expect_from_to("a \\to infinity", "a \\to \\infty");
+}
+
 
 // 最後に{名前,関数ポインタ}対を列挙する必要あり
 TEST_LIST = {
-    {"cdot", ts_cdot}
+    {"cdot", ts_cdot},
+    {"infinity", ts_infinity}
 };
