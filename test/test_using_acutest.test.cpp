@@ -1,4 +1,4 @@
-#include "acutest.h"
+#include "../include/acutest.h"
 // テスト関数は(void) -> void型でなくてはならない
 void test_of_test(){
     TEST_CHECK(1 + 1 == 2);
