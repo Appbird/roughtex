@@ -1,5 +1,5 @@
-#ifndef REPLACER_INCLUDED
-#define REPLACER_INCLUDED
+#ifndef STRING_READER_INCLUDED
+#define STRING_READER_INCLUDED
 #include <string>
 /**
  * @brief 一文字ずつ空白を読み飛ばさず読むリーダー。先読みも逆戻りも可能。
