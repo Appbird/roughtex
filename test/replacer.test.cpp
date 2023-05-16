@@ -19,9 +19,13 @@ void ts_infinity(){
     expect_from_to("a \\to infinity", "a \\to \\infty");
 }
 
+void ts_cdots(){
+    expect_from_to("0 ... 1", "0 \\cdots 1");
+}
 
 // 最後に{名前,関数ポインタ}対を列挙する必要あり
 TEST_LIST = {
     {"cdot", ts_cdot},
-    {"infinity", ts_infinity}
+    {"infinity", ts_infinity},
+    {"cdots", ts_cdots}
 };
