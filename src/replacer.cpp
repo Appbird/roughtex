@@ -8,8 +8,7 @@
  * マッチすれば、sinのポインタをその先のものへ移行する。
  */
 static inline bool match_constant_token(const char c, string_reader& sin, std::string str){
-    if (c != str.at(0)) { return false; }
-    
+    assert(c == str.at(0));
     const int base = sin.current_pointer();
     for (std::string::iterator i = str.begin() + 1; i != str.end(); i++){
         if (sin.at_the_end() || sin.get() != *i){
@@ -32,6 +31,8 @@ ConstantTokenMap get_ConstantTokenList(){
         {"*", "\\cout"},
         {"infinity", "\\infty"},
         {"...", "\\cdots"},  
+        {"{", "\\{"},  
+        {"}", "\\}"},  
     };
     for (const ConstantTokenPair& branch : pairs){
         token_map.insert(std::make_pair(branch.before[0], branch));

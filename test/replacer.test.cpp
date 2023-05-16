@@ -23,9 +23,14 @@ void ts_cdots(){
     expect_from_to("0 ... 1", "0 \\cdots 1");
 }
 
+
+void ts_brackets(){
+    expect_from_to("S := {a | aは実数}", "S := \\{a | aは実数\\}");
+}
 // 最後に{名前,関数ポインタ}対を列挙する必要あり
 TEST_LIST = {
     {"cdot", ts_cdot},
     {"infinity", ts_infinity},
-    {"cdots", ts_cdots}
+    {"cdots", ts_cdots},
+    {"brackets", ts_brackets},
 };
